@@ -1,0 +1,22 @@
+From: Martín Ferrari <tincho@debian.org>
+Date: Sat Jul 29 14:00:55 UTC 2017
+Subject: Avoid network access during tests
+
+Forwarded: no
+
+Use an invalid address to avoid DNS lookups that were meant to fail.
+---
+--- a/openstack/testing/client_test.go
++++ b/openstack/testing/client_test.go
+@@ -307,9 +307,9 @@
+ }
+ 
+ func TestAuthenticatedClientV3Fails(t *testing.T) {
+-	testAuthenticatedClientFails(t, "http://bad-address.example.com/v3")
++	testAuthenticatedClientFails(t, "http://:::/v3")
+ }
+ 
+ func TestAuthenticatedClientV2Fails(t *testing.T) {
+-	testAuthenticatedClientFails(t, "http://bad-address.example.com/v2.0")
++	testAuthenticatedClientFails(t, "http://:::/v2.0")
+ }

@@ -1,0 +1,25 @@
+From: Shengjing Zhu <i@zhsj.me>
+Date: Sat, 29 Jul 2017 02:48:49 +0800
+Subject: Fix TestTemplateParsing
+
+Forwarded: no
+
+The test expects num value parsed from json string is int type,
+which is float64 type instead.
+---
+ openstack/orchestration/v1/stacks/fixtures.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/openstack/orchestration/v1/stacks/fixtures.go b/openstack/orchestration/v1/stacks/fixtures.go
+index d6fd075..b989504 100644
+--- a/openstack/orchestration/v1/stacks/fixtures.go
++++ b/openstack/orchestration/v1/stacks/fixtures.go
+@@ -180,7 +180,7 @@ var ValidJSONTemplateParsed = map[string]interface{}{
+ 	"heat_template_version": "2014-10-16",
+ 	"parameters": map[string]interface{}{
+ 		"flavor": map[string]interface{}{
+-			"default":     4353,
++			"default":     4353.0,
+ 			"description": "Flavor for the server to be created",
+ 			"hidden":      true,
+ 			"type":        "string",

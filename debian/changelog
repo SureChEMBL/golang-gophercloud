@@ -1,0 +1,5 @@
+golang-github-gophercloud-gophercloud (0.0~git20170728.0.0118feec-1) unstable; urgency=medium
+
+  * Initial release (Closes: #869981)
+
+ -- Shengjing Zhu <i@zhsj.me>  Sat, 29 Jul 2017 14:50:44 +0800

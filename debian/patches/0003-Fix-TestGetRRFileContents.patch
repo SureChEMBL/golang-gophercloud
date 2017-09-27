@@ -1,0 +1,33 @@
+From: Shengjing Zhu <i@zhsj.me>
+Date: Sat, 29 Jul 2017 14:39:45 +0800
+Subject: Fix TestGetRRFileContents
+
+Forwarded: no
+
+fix expected result
+---
+ openstack/orchestration/v1/stacks/environment_test.go | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/openstack/orchestration/v1/stacks/environment_test.go b/openstack/orchestration/v1/stacks/environment_test.go
+index a7e3aae..6b8c6cb 100644
+--- a/openstack/orchestration/v1/stacks/environment_test.go
++++ b/openstack/orchestration/v1/stacks/environment_test.go
+@@ -172,11 +172,12 @@ service_db:
+ 
+ 	env.fixFileRefs()
+ 	expectedParsed := map[string]interface{}{
+-		"resource_registry": "2015-04-30",
+-		"My::WP::Server":    fakeEnvURL,
+-		"resources": map[string]interface{}{
+-			"my_db_server": map[string]interface{}{
+-				"OS::DBInstance": fakeDBURL,
++		"resource_registry": map[string]interface{}{
++			"My::WP::Server": "my_env.yaml",
++			"resources": map[string]interface{}{
++				"my_db_server": map[string]interface{}{
++					"OS::DBInstance": "my_db.yaml",
++				},
+ 			},
+ 		},
+ 	}

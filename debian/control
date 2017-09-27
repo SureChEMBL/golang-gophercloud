@@ -1,0 +1,28 @@
+Source: golang-github-gophercloud-gophercloud
+Section: devel
+Priority: extra
+Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
+Uploaders: Shengjing Zhu <i@zhsj.me>
+Build-Depends: debhelper (>= 10),
+               dh-golang,
+               golang-any,
+               golang-golang-x-crypto-dev,
+               golang-gopkg-yaml.v2-dev
+Standards-Version: 4.0.0
+Homepage: https://github.com/gophercloud/gophercloud
+Vcs-Browser: https://anonscm.debian.org/cgit/pkg-go/packages/golang-github-gophercloud-gophercloud.git
+Vcs-Git: https://anonscm.debian.org/git/pkg-go/packages/golang-github-gophercloud-gophercloud.git
+XS-Go-Import-Path: github.com/gophercloud/gophercloud
+Testsuite: autopkgtest-pkg-go
+
+Package: golang-github-gophercloud-gophercloud-dev
+Architecture: all
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         golang-golang-x-crypto-dev,
+         golang-gopkg-yaml.v2-dev
+Description: OpenStack SDK for Go
+ Gophercloud allows Go developers to connect their applications with
+ OpenStack clouds. It is fully open source and supports many OpenStack
+ services like Compute, Object Storage, Identity, Networking and
+ Block Storage.

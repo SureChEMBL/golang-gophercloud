@@ -1,0 +1,7 @@
+#!/usr/bin/make -f
+
+# no buildable Go source files in following dir
+export DH_GOLANG_EXCLUDES := internal/testing
+
+%:
+	dh $@ --buildsystem=golang --with=golang

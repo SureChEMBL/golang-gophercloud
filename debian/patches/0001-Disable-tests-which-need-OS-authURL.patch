@@ -1,0 +1,169 @@
+From: Shengjing Zhu <i@zhsj.me>
+Date: Sat, 29 Jul 2017 02:36:58 +0800
+Subject: Disable tests which need OS authURL
+
+Forwarded: not-needed
+---
+ acceptance/openstack/sharedfilesystems/v2/availabilityzones_test.go | 1 +
+ acceptance/openstack/sharedfilesystems/v2/securityservices_test.go  | 4 ++++
+ acceptance/openstack/sharedfilesystems/v2/sharenetworks_test.go     | 6 ++++++
+ acceptance/openstack/sharedfilesystems/v2/shares_test.go            | 1 +
+ acceptance/openstack/sharedfilesystems/v2/sharetypes_test.go        | 5 +++++
+ 5 files changed, 17 insertions(+)
+
+diff --git a/acceptance/openstack/sharedfilesystems/v2/availabilityzones_test.go b/acceptance/openstack/sharedfilesystems/v2/availabilityzones_test.go
+index 8841160..a371c59 100644
+--- a/acceptance/openstack/sharedfilesystems/v2/availabilityzones_test.go
++++ b/acceptance/openstack/sharedfilesystems/v2/availabilityzones_test.go
+@@ -8,6 +8,7 @@ import (
+ )
+ 
+ func TestAvailabilityZonesList(t *testing.T) {
++	return
+ 	client, err := clients.NewSharedFileSystemV2Client()
+ 	if err != nil {
+ 		t.Fatalf("Unable to create shared file system client: %v", err)
+diff --git a/acceptance/openstack/sharedfilesystems/v2/securityservices_test.go b/acceptance/openstack/sharedfilesystems/v2/securityservices_test.go
+index ecf8cc9..91032c2 100644
+--- a/acceptance/openstack/sharedfilesystems/v2/securityservices_test.go
++++ b/acceptance/openstack/sharedfilesystems/v2/securityservices_test.go
+@@ -8,6 +8,7 @@ import (
+ )
+ 
+ func TestSecurityServiceCreateDelete(t *testing.T) {
++	return
+ 	client, err := clients.NewSharedFileSystemV2Client()
+ 	if err != nil {
+ 		t.Fatalf("Unable to create shared file system client: %v", err)
+@@ -33,6 +34,7 @@ func TestSecurityServiceCreateDelete(t *testing.T) {
+ }
+ 
+ func TestSecurityServiceList(t *testing.T) {
++	return
+ 	client, err := clients.NewSharedFileSystemV2Client()
+ 	if err != nil {
+ 		t.Fatalf("Unable to create a shared file system client: %v", err)
+@@ -56,6 +58,7 @@ func TestSecurityServiceList(t *testing.T) {
+ // The test creates 2 security services and verifies that only the one(s) with
+ // a particular name are being listed
+ func TestSecurityServiceListFiltering(t *testing.T) {
++	return
+ 	client, err := clients.NewSharedFileSystemV2Client()
+ 	if err != nil {
+ 		t.Fatalf("Unable to create a shared file system client: %v", err)
+@@ -98,6 +101,7 @@ func TestSecurityServiceListFiltering(t *testing.T) {
+ // Create a security service and update the name and description. Get the security
+ // service and verify that the name and description have been updated
+ func TestSecurityServiceUpdate(t *testing.T) {
++	return
+ 	client, err := clients.NewSharedFileSystemV2Client()
+ 	if err != nil {
+ 		t.Fatalf("Unable to create shared file system client: %v", err)
+diff --git a/acceptance/openstack/sharedfilesystems/v2/sharenetworks_test.go b/acceptance/openstack/sharedfilesystems/v2/sharenetworks_test.go
+index 7bf760f..5383c1e 100644
+--- a/acceptance/openstack/sharedfilesystems/v2/sharenetworks_test.go
++++ b/acceptance/openstack/sharedfilesystems/v2/sharenetworks_test.go
+@@ -10,6 +10,7 @@ import (
+ )
+ 
+ func TestShareNetworkCreateDestroy(t *testing.T) {
++	return
+ 	client, err := clients.NewSharedFileSystemV2Client()
+ 	if err != nil {
+ 		t.Fatalf("Unable to create shared file system client: %v", err)
+@@ -37,6 +38,7 @@ func TestShareNetworkCreateDestroy(t *testing.T) {
+ // Create a share network and update the name and description. Get the share
+ // network and verify that the name and description have been updated
+ func TestShareNetworkUpdate(t *testing.T) {
++	return
+ 	client, err := clients.NewSharedFileSystemV2Client()
+ 	if err != nil {
+ 		t.Fatalf("Unable to create shared file system client: %v", err)
+@@ -81,6 +83,7 @@ func TestShareNetworkUpdate(t *testing.T) {
+ }
+ 
+ func TestShareNetworkListDetail(t *testing.T) {
++	return
+ 	client, err := clients.NewSharedFileSystemV2Client()
+ 	if err != nil {
+ 		t.Fatalf("Unable to create a shared file system client: %v", err)
+@@ -104,6 +107,7 @@ func TestShareNetworkListDetail(t *testing.T) {
+ // The test creates 2 shared networks and verifies that only the one(s) with
+ // a particular name are being listed
+ func TestShareNetworkListFiltering(t *testing.T) {
++	return
+ 	client, err := clients.NewSharedFileSystemV2Client()
+ 	if err != nil {
+ 		t.Fatalf("Unable to create a shared file system client: %v", err)
+@@ -144,6 +148,7 @@ func TestShareNetworkListFiltering(t *testing.T) {
+ }
+ 
+ func TestShareNetworkListPagination(t *testing.T) {
++	return
+ 	client, err := clients.NewSharedFileSystemV2Client()
+ 	if err != nil {
+ 		t.Fatalf("Unable to create a shared file system client: %v", err)
+@@ -184,6 +189,7 @@ func TestShareNetworkListPagination(t *testing.T) {
+ }
+ 
+ func TestShareNetworkAddRemoveSecurityService(t *testing.T) {
++	return
+ 	client, err := clients.NewSharedFileSystemV2Client()
+ 	if err != nil {
+ 		t.Fatalf("Unable to create a shared file system client: %v", err)
+diff --git a/acceptance/openstack/sharedfilesystems/v2/shares_test.go b/acceptance/openstack/sharedfilesystems/v2/shares_test.go
+index abb9b3a..9923a03 100644
+--- a/acceptance/openstack/sharedfilesystems/v2/shares_test.go
++++ b/acceptance/openstack/sharedfilesystems/v2/shares_test.go
+@@ -8,6 +8,7 @@ import (
+ )
+ 
+ func TestShareCreate(t *testing.T) {
++	return
+ 	client, err := clients.NewSharedFileSystemV2Client()
+ 	if err != nil {
+ 		t.Fatalf("Unable to create a sharedfs client: %v", err)
+diff --git a/acceptance/openstack/sharedfilesystems/v2/sharetypes_test.go b/acceptance/openstack/sharedfilesystems/v2/sharetypes_test.go
+index f2f8219..761548f 100644
+--- a/acceptance/openstack/sharedfilesystems/v2/sharetypes_test.go
++++ b/acceptance/openstack/sharedfilesystems/v2/sharetypes_test.go
+@@ -8,6 +8,7 @@ import (
+ )
+ 
+ func TestShareTypeCreateDestroy(t *testing.T) {
++	return
+ 	client, err := clients.NewSharedFileSystemV2Client()
+ 	if err != nil {
+ 		t.Fatalf("Unable to create shared file system client: %v", err)
+@@ -24,6 +25,7 @@ func TestShareTypeCreateDestroy(t *testing.T) {
+ }
+ 
+ func TestShareTypeList(t *testing.T) {
++	return
+ 	client, err := clients.NewSharedFileSystemV2Client()
+ 	if err != nil {
+ 		t.Fatalf("Unable to create a shared file system client: %v", err)
+@@ -45,6 +47,7 @@ func TestShareTypeList(t *testing.T) {
+ }
+ 
+ func TestShareTypeGetDefault(t *testing.T) {
++	return
+ 	client, err := clients.NewSharedFileSystemV2Client()
+ 	if err != nil {
+ 		t.Fatalf("Unable to create a shared file system client: %v", err)
+@@ -59,6 +62,7 @@ func TestShareTypeGetDefault(t *testing.T) {
+ }
+ 
+ func TestShareTypeExtraSpecs(t *testing.T) {
++	return
+ 	client, err := clients.NewSharedFileSystemV2Client()
+ 	if err != nil {
+ 		t.Fatalf("Unable to create shared file system client: %v", err)
+@@ -111,6 +115,7 @@ func TestShareTypeExtraSpecs(t *testing.T) {
+ }
+ 
+ func TestShareTypeAccess(t *testing.T) {
++	return
+ 	client, err := clients.NewSharedFileSystemV2Client()
+ 	if err != nil {
+ 		t.Fatalf("Unable to create shared file system client: %v", err)

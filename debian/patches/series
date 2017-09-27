@@ -1,0 +1,4 @@
+0001-Disable-tests-which-need-OS-authURL.patch
+0002-Fix-TestTemplateParsing.patch
+0003-Fix-TestGetRRFileContents.patch
+0004-Avoid-network-access.patch
